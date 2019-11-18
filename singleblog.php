@@ -209,22 +209,30 @@
         <div class="col-md-6 ml-auto mr-auto">
           <div class="media-area">
             <?php
-              $comments = get_comments($content->ID);
-
-              debug_to_console($comments);
+              $allcomments = get_comments();
+              debug_to_console($allcomments);
+              $postcomments = array();
+              foreach($allcomments as $comment) {
+                if($comment->comment_post_ID == $id){
+                  array_push($postcomments, $comment);
+                }
+              }
+              debug_to_console($postcomments);
             ?>
             <h3 class="title text-center">
               <?php 
-                if(sizeof($comments) == 0){
-                  'No Comments';
-                } else if(sizeof($comments) == 1){
-                  echo sizeof($comments).' Comment';
+                if(sizeof($postcomments) == 0){
+                  echo 'No Comments';
+                } else if(sizeof($postcomments) == 1){
+                  echo sizeof($postcomments).' Comment';
                 } else {
-                  echo sizeof($comments.' Comments');
+                  echo sizeof($postcomments.' Comments');
                 }?>
             </h3>
             <?php
-              foreach( $comments as $comment ) {
+              foreach( $postcomments as $comment ) {
+                $commentsforpost = array();
+                // if()
                 $startime = new DateTime($comment->comment_date);
                 $sinceposted = $startime->diff(new DateTime());
                 $sincepostedstr = '';

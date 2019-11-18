@@ -83,7 +83,7 @@
                About
              </a>
              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-               <a class="dropdown-item" href="#">Team S'wooft</a>
+               <a class="dropdown-item" href="our-team.html">Team S'wooft</a>
                <a class="dropdown-item" href="#">Community</a>
              </div>
            </li>
@@ -231,20 +231,17 @@
    <footer class="footer footer-default">
        <div class="container ">
          <nav class="float-left">
-         <ul>
-          <li>
-            <a>Phone: 773-340-1775</a>
-          </li>
-          <li>
-          </li>
-          <a href="http://www.facebook.com/swooftchicago" style="color: black;"><i
-              class="fab fa-facebook-square"></i></i></a>
-          <a href="https://www.instagram.com/swooftchicago/" style="color: black"><i class="fab fa-instagram"></i></a>
-          <a href="http://www.yelp.com/biz/swooft-dog-walking-and-pet-care-chicago" style="color: black"><i
-              class="fab fa-yelp"></i></a>
-          <a href="https://www.youtube.com/channel/UC37oPPjkBDbl7fgrgQ9ekzA?view_as=subscriber" style="color: black;"><i
-              class="fab fa-youtube"></i></a>
-        </ul>
+           <ul>
+             <li>
+               <a>Phone: 773-340-1775</a>
+             </li>
+             <li>
+             </li>
+             <a href="http://www.facebook.com/swooftchicago" style="color: black;"><i class="fab fa-facebook-square"></i></a>
+             <a href="https://www.instagram.com/swooftchicago/" style="color: black"><i class="fab fa-instagram"></i></a>
+             <a href="http://www.yelp.com/biz/swooft-dog-walking-and-pet-care-chicago" style="color: black"><i class="fab fa-yelp"></i></a>
+             <a href="https://www.youtube.com/channel/UC37oPPjkBDbl7fgrgQ9ekzA?view_as=subscriber" style="color: black;"><i class="fab fa-youtube"></i></a>
+           </ul>
            <p>3943 N. Austin Ave.  Chicago, IL  60634</p>
          </nav>
          <div class="copyright float-right">

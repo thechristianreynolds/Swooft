@@ -46,16 +46,6 @@
   <script src="https://kit.fontawesome.com/a196dee797.js" crossorigin="anonymous"></script>
   <!-- Material Kit CSS -->
   <link href="assets/css/material-kit.css?v=2.0.6" rel="stylesheet" />
-  <?php 
-     require 'simple_html_dom.php';
-     define('WP_USE_THEMES', false);
-     require('blog/wp-blog-header.php');
-     function debug_to_console($data) {
-       $output = json_encode($data);
-   
-       echo "<script>console.log($output);</script>";
-   }
-   ?>
 </head>
 
 <body class="sidebar-collapse" style="width: 100%;">
@@ -84,7 +74,7 @@
               About
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Team S'wooft</a>
+              <a class="dropdown-item" href="our-team.html">Team S'wooft</a>
               <a class="dropdown-item" href="#">Community</a>
             </div>
           </li>
@@ -94,7 +84,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="blog.php" class="nav-link">
+            <a href="blog.html" class="nav-link">
               Blog
             </a>
           </li>
@@ -151,50 +141,44 @@
               <img src="assets/img/swooft-logo-new-clear.png" alt="Thumbnail Image"
                 class="img-raised rounded-circle img-fluid" style="overflow: auto;" height="50rem" width="50rem">
             </div>
-            <?php
-              $id = $_GET['id'];
-              $content = get_post($id);
-              $author = get_author_name($content->post_author);
-              $date = get_the_date('d-m-Y', $id);
-              $post = $content->post_content;
-              $html = str_get_html($post);
-              $img = $html->find('img');
-
-              $source = $img[0]->src;
-              
-
-            ?>
             <div class="media media-heading">
               <h4 class=" media-heading ml-1 mt-auto">
-                <?php
-                  echo $author;
-                ?>
-                <small>· <?php echo $date?></small>
+                Iroquois Pliskin
+                <small>· Yesterday</small>
                 <small>· 5 min read</small>
               </h4>
             </div>
           </div>
           <div class="row justify-content-center">
             <div class="mx-5">
-              <h2 class="title mt-1"><?php echo $content->post_title ?></h2>
+              <h2 class="title mt-1">Lorem Ipsum</h2>
               <div id="blog-img-right">
-                <?php
-                  if($source){
-                    echo '<img class="float-right mx-3 my-3 img-thumbnail" style="width: 40%;"
-                    src="'.$source.'">';
-                    
-                  } else {
-                    echo '<img class="float-right mx-3 my-3 img-thumbnail" style="width: 40%;"
-                    src="assets/img/Shared Img/4th of JULY.jpg">';
-                  }
-                ?>
+                <img class="float-right mx-3 my-3 img-thumbnail" style="width: 40%;"
+                  src="assets/img/Shared Img/4th of JULY.jpg">
               </div>
-              <div id="blogPost">
-                <?php
-                  echo $content->post_content;
-                  echo '<script>document.getElementById("blogPost").getElementsByTagName("img")[0].remove()</script>'
-                ?>
-              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tortor orci, scelerisque id ex a,
+                aliquet congue nibh. Vivamus ut tempor nisl, ut tristique ipsum. In in felis laoreet, maximus mi quis,
+                lacinia nibh. Pellentesque feugiat congue faucibus. Cras tincidunt magna sed nulla molestie, at varius
+                augue congue. Vivamus quam lectus, malesuada quis metus vel, eleifend fermentum libero. In a convallis
+                tellus. Donec in purus eu orci porttitor sagittis id quis ante. Donec condimentum mauris dolor, vitae
+                finibus augue scelerisque vel. Sed eget tincidunt lacus. Vestibulum sit amet ipsum vel eros laoreet
+                mattis. Quisque vestibulum tellus eget nibh tristique, eu fringilla libero pretium. Vivamus tristique
+                mollis lacinia. Sed finibus enim vel diam sodales fringilla. Etiam aliquam vitae dolor et iaculis.
+                Integer mollis interdum tempus.</p>
+              <br>
+              <p>Nunc fringilla massa eget lectus posuere fringilla. Donec imperdiet purus at ante volutpat, nec
+                hendrerit sapien eleifend. Quisque elementum tortor id justo consequat lacinia. Morbi porttitor, erat id
+                venenatis blandit, sapien lacus malesuada nisi, non venenatis metus erat in risus. Pellentesque nec
+                risus in metus faucibus tincidunt. Mauris fringilla feugiat erat et placerat. Donec maximus sed dui ac
+                finibus. Cras velit nulla, ultricies ut dui ut, pellentesque mollis mauris. Proin ac eros blandit elit
+                tincidunt dictum. Mauris id sollicitudin purus. Cras non felis vel felis efficitur commodo.</p>
+              <br>
+              <p>Suspendisse commodo mauris non elementum sagittis. Donec pharetra, justo eu auctor blandit, neque nulla
+                fermentum justo, a varius lacus urna facilisis lectus. Suspendisse non sapien sit amet metus pulvinar
+                hendrerit. Pellentesque non sodales elit, sed mollis orci. Nunc mollis porta posuere. Sed ut tellus id
+                urna volutpat aliquet. Quisque vel risus imperdiet, laoreet felis sit amet, pretium libero. Fusce vel ex
+                posuere, mattis leo at, suscipit leo. Donec a rhoncus odio. Suspendisse non consectetur erat.</p>
+              <br>
             </div>
           </div>
         </div>
@@ -204,76 +188,73 @@
       <div>
         <div class="col-md-6 ml-auto mr-auto">
           <div class="media-area">
-          <?php
-              $allcomments = get_comments();
-              debug_to_console($allcomments);
-              $postcomments = array();
-              foreach($allcomments as $comment) {
-                if($comment->comment_post_ID == $id){
-                  array_push($postcomments, $comment);
-                }
-              }
-              debug_to_console($postcomments);
-            ?>
-            <h3 class="title text-center">
-              <?php 
-                if(sizeof($postcomments) == 0){
-                  echo 'No Comments';
-                } else if(sizeof($postcomments) == 1){
-                  echo sizeof($postcomments).' Comment';
-                } else {
-                  echo sizeof($postcomments.' Comments');
-                }?>
-            </h3>
-            <?php
-              foreach( $postcomments as $comment ) {
-                $commentsforpost = array();
-                // if()
-                $startime = new DateTime($comment->comment_date);
-                $sinceposted = $startime->diff(new DateTime());
-                $sincepostedstr = '';
-                if($sinceposted->y > 0){
-                  if($sinceposted->y > 1)
-                    $sincepostedstr = $sinceposted->y.' years ago';
-                  else
-                    $sincepostedstr = $sinceposted->y.' year ago';
-                } else if($sinceposted->m > 0){
-                  if($sinceposted->m > 1)
-                    $sincepostedstr = $sinceposted->m.' months ago';
-                  else
-                    $sincepostedstr = $sinceposted->m.' month ago';
-                } else if($sinceposted->d > 0){
-                  if($sinceposted->d > 1)
-                    $sincepostedstr = $sinceposted->d.' days ago';
-                  else
-                    $sincepostedstr = $sinceposted->d.' day ago';
-                } else if($sinceposted->h > 0){
-                  if($sinceposted->h > 1)
-                    $sincepostedstr = $sinceposted->h.' hours ago';
-                  else
-                    $sincepostedstr = $sinceposted->h.' hour ago';
-                } else if($sinceposted->i > 0){
-                  if($sinceposted->i > 1)
-                    $sincepostedstr = $sinceposted->i.' minutes ago';
-                  else
-                    $sincepostedstr = $sinceposted->i.' minute ago';
-                } else if($sinceposted->s > 0){
-                  if($sinceposted->s > 1)
-                    $sincepostedstr = $sinceposted->s.' seconds ago';
-                  else
-                    $sincepostedstr = $sinceposted->s.' second ago';
-                }
-                echo '<div class="media">';
-                echo '<div class="media-body">';
-                echo '<h4 class="media-heading">'.$comment->comment_author.' <small>· '.$sincepostedstr.'</small></h4>';
-                echo '<h6 class="text-muted"></h6>';
-                echo '<p>'.$comment->comment_content.'</p>';
-                echo '<div class="media-footer">';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-              }
-            ?>
+            <h3 class="title text-center">3 Comments</h3>
+            <div class="media">
+              <!-- <a class="float-left" href="#pablo">
+                <div class="avatar">
+                  <img class="media-object" src="../assets/img/faces/card-profile4-square.jpg" alt="...">
+                </div>
+              </a> -->
+              <div class="media-body">
+                <h4 class="media-heading">Mary Sue <small>· 7 minutes ago</small></h4>
+                <h6 class="text-muted"></h6>
+                <p>Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda!
+                  Don't be scared of the truth because we need to restart the human foundation in truth I stand with the
+                  most humility. We are so blessed!</p>
+                <div class="media-footer">
+                  <a href="#pablo" class="btn btn-primary btn-link float-right" rel="tooltip" title=""
+                    data-original-title="Reply to Comment">
+                    <i class="material-icons">reply</i> Reply
+                  </a>
+                  <a href="#pablo" class="btn btn-danger btn-link float-right">
+                    <i class="material-icons">favorite</i> 243
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="media">
+              <!-- <a class="float-left" href="#pablo">
+                <div class="avatar">
+                  <img class="media-object" alt="Tim Picture" src="../assets/img/faces/card-profile1-square.jpg">
+                </div>
+              </a> -->
+              <div class="media-body">
+                <h4 class="media-heading">John Doe <small>· Yesterday</small></h4>
+                <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will
+                  keep you posted for the latest news.</p>
+                <p> Don't forget, You're Awesome!</p>
+                <div class="media-footer">
+                  <a href="#pablo" class="btn btn-primary btn-link float-right" rel="tooltip" title=""
+                    data-original-title="Reply to Comment">
+                    <i class="material-icons">reply</i> Reply
+                  </a>
+                  <a href="#pablo" class="btn btn-link float-right">
+                    <i class="material-icons">favorite</i> 25
+                  </a>
+                </div>
+                <!-- <div class="media">
+                  <a class="float-left" href="#pablo">
+                    <div class="avatar">
+                      <img class="media-object" alt="64x64" src="../assets/img/faces/card-profile4-square.jpg">
+                    </div>
+                  </a> -->
+                <!-- <div class="media-body">
+                    <h4 class="media-heading">Tina Andrew <small>· 12 Hours Ago</small></h4>
+                    <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We
+                      will keep you posted for the latest news.</p>
+                    <p> Don't forget, You're Awesome!</p>
+                    <div class="media-footer">
+                      <a href="#pablo" class="btn btn-primary btn-link float-right" rel="tooltip" title=""
+                        data-original-title="Reply to Comment">
+                        <i class="material-icons">reply</i> Reply
+                      </a>
+                      <a href="#pablo" class="btn btn-link btn-secondary float-right">
+                        <i class="material-icons">favorite</i> 2
+                      </a>
+                    </div>
+                  </div> -->
+              </div>
+            </div>
           </div>
         </div>
         <h3 class="title text-center">Post your comment</h3>
